@@ -1,0 +1,1944 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Aboker Secondary School | Online Examination System</title>
+
+<style>
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --primary: #1261a0;
+    --dark: #071d35;
+    --light: #eef3f8;
+    --white: #ffffff;
+    --text: #172033;
+    --muted: #667085;
+    --danger: #c62828;
+    --border: #d9e0e8;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: var(--light);
+    color: var(--text);
+    line-height: 1.6;
+}
+
+button, input, textarea {
+    font: inherit;
+}
+
+button {
+    cursor: pointer;
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* HEADER */
+
+header {
+    background: linear-gradient(135deg, var(--dark), var(--primary));
+    color: white;
+    padding: 14px 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.logo {
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    background: white;
+    color: var(--primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 19px;
+    border: 3px solid #f5c542;
+    flex-shrink: 0;
+}
+
+.brand h2 {
+    font-size: 19px;
+    line-height: 1.3;
+}
+
+.brand p {
+    font-size: 12px;
+    color: #dcecff;
+}
+
+nav {
+    display: flex;
+    gap: 7px;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+nav button {
+    color: white;
+    border: 1px solid #ffffff50;
+    background: #ffffff12;
+    padding: 9px 12px;
+    border-radius: 8px;
+}
+
+nav button:hover,
+nav button.active {
+    background: white;
+    color: var(--primary);
+}
+
+.container {
+    width: 92%;
+    max-width: 1150px;
+    margin: 30px auto;
+}
+
+.card {
+    background: white;
+    padding: 28px;
+    border-radius: 16px;
+    box-shadow: 0 5px 20px #0000000c;
+}
+
+h1, h2, h3 {
+    line-height: 1.3;
+}
+
+h1 {
+    margin-bottom: 12px;
+}
+
+.subtitle {
+    color: var(--muted);
+    margin-bottom: 20px;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.section-title p {
+    color: var(--muted);
+    margin-top: 8px;
+}
+
+.primary {
+    background: var(--primary);
+    color: white;
+    padding: 13px 18px;
+    border: 0;
+    border-radius: 9px;
+    font-weight: bold;
+}
+
+.primary:hover {
+    background: #0b4f86;
+}
+
+.secondary {
+    background: #e8f2fc;
+    color: var(--primary);
+    border: 0;
+    padding: 12px 17px;
+    border-radius: 9px;
+    font-weight: bold;
+}
+
+.danger {
+    background: var(--danger);
+    color: white;
+    border: 0;
+    padding: 12px 17px;
+    border-radius: 9px;
+}
+
+input, textarea {
+    width: 100%;
+    padding: 13px;
+    margin: 7px 0 16px;
+    border: 1px solid #ccd5e0;
+    border-radius: 9px;
+    background: white;
+}
+
+textarea {
+    min-height: 130px;
+    resize: vertical;
+}
+
+label {
+    font-weight: bold;
+}
+
+.full-width {
+    width: 100%;
+}
+
+/* HOME PAGE */
+
+.hero {
+    min-height: 440px;
+    display: flex;
+    align-items: center;
+    padding: 55px 7%;
+    color: white;
+    background:
+        linear-gradient(90deg, #071d35ed, #071d3580),
+        url("https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=1800&q=85")
+        center/cover;
+}
+
+.hero-content {
+    max-width: 650px;
+}
+
+.hero h1 {
+    font-size: clamp(32px, 5vw, 52px);
+    margin-bottom: 18px;
+}
+
+.hero p {
+    font-size: 18px;
+    margin-bottom: 25px;
+}
+
+.hero-actions {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.hero .secondary {
+    background: white;
+}
+
+.stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 18px;
+    margin-top: 25px;
+}
+
+.stat {
+    background: white;
+    padding: 23px;
+    text-align: center;
+    border-radius: 13px;
+    box-shadow: 0 4px 15px #00000009;
+}
+
+.stat strong {
+    display: block;
+    font-size: 26px;
+    color: var(--primary);
+}
+
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 20px;
+}
+
+.gallery img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    border-radius: 13px;
+}
+
+.gallery h3 {
+    margin: 10px 0 5px;
+}
+
+.gallery p {
+    color: var(--muted);
+}
+
+.gallery-card {
+    background: white;
+    padding: 12px;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px #00000009;
+}
+
+/* ABOUT PAGE */
+
+.about-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 20px;
+}
+
+.about-box {
+    background: white;
+    padding: 25px;
+    border-radius: 13px;
+    border-top: 4px solid var(--primary);
+    box-shadow: 0 4px 15px #00000008;
+}
+
+.about-box h3 {
+    margin-bottom: 10px;
+    color: var(--primary);
+}
+
+/* CONTACT PAGE */
+
+.contact-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+}
+
+.contact-info {
+    background: var(--dark);
+    color: white;
+    padding: 27px;
+    border-radius: 14px;
+}
+
+.contact-info h2 {
+    margin-bottom: 20px;
+}
+
+.contact-info p {
+    margin-bottom: 17px;
+    overflow-wrap: anywhere;
+}
+
+.form-message {
+    margin-top: 12px;
+    font-weight: bold;
+}
+
+/* SUBJECTS */
+
+.subject-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+    gap: 18px;
+    margin-top: 25px;
+}
+
+.subject {
+    background: white;
+    padding: 25px;
+    text-align: center;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px #0000000d;
+    border: 2px solid transparent;
+    transition: .2s;
+}
+
+.subject:hover {
+    transform: translateY(-4px);
+    border-color: var(--primary);
+}
+
+.subject .icon {
+    font-size: 42px;
+    margin-bottom: 10px;
+}
+
+.subject p {
+    color: var(--muted);
+}
+
+/* EXAM */
+
+.exam-bar {
+    position: sticky;
+    top: 10px;
+    z-index: 5;
+    background: white;
+    padding: 17px;
+    margin-bottom: 20px;
+    border-radius: 12px;
+    box-shadow: 0 3px 15px #00000012;
+}
+
+.timer {
+    color: var(--danger);
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.progress-bg {
+    height: 9px;
+    background: #e5eaf0;
+    border-radius: 10px;
+    margin-top: 12px;
+    overflow: hidden;
+}
+
+.progress {
+    width: 0%;
+    height: 100%;
+    background: var(--primary);
+    transition: width .2s;
+}
+
+.question {
+    background: white;
+    padding: 23px;
+    margin-bottom: 18px;
+    border-radius: 14px;
+    box-shadow: 0 4px 15px #00000009;
+}
+
+.question h3 {
+    margin-bottom: 15px;
+}
+
+.option {
+    display: block;
+    padding: 12px;
+    margin: 8px 0;
+    background: #f5f7fa;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: normal;
+}
+
+.option:hover {
+    background: #e8f2fc;
+}
+
+.option input {
+    width: auto;
+    margin: 0 8px 0 0;
+}
+
+/* RESULTS */
+
+.success {
+    text-align: center;
+    padding: 45px 20px;
+}
+
+.success-icon {
+    font-size: 60px;
+    margin-bottom: 15px;
+}
+
+.table-wrap {
+    width: 100%;
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 650px;
+}
+
+th {
+    background: var(--primary);
+    color: white;
+    padding: 12px;
+}
+
+td {
+    padding: 11px;
+    border-bottom: 1px solid #ddd;
+    text-align: left;
+}
+
+/* FOOTER */
+
+footer {
+    background: var(--dark);
+    color: white;
+    text-align: center;
+    padding: 28px 15px;
+    margin-top: 50px;
+}
+
+footer p {
+    margin: 5px 0;
+    color: #dce5ef;
+}
+
+footer button {
+    margin: 10px 5px 0;
+}
+
+/* RESPONSIVE */
+
+@media(max-width: 700px) {
+    header {
+        padding: 14px;
+    }
+
+    .brand h2 {
+        font-size: 16px;
+    }
+
+    nav {
+        width: 100%;
+    }
+
+    nav button {
+        flex: 1 1 auto;
+        font-size: 12px;
+        padding: 9px 7px;
+    }
+
+    .hero {
+        padding: 40px 6%;
+        min-height: 400px;
+    }
+
+    .hero p {
+        font-size: 16px;
+    }
+
+    .container {
+        width: 95%;
+        margin: 18px auto;
+    }
+
+    .card {
+        padding: 20px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+
+<header>
+    <div class="brand">
+        <div class="logo">ABS</div>
+        <div>
+            <h2>Aboker Secondary School</h2>
+            <p>Learn Today, Lead Tomorrow</p>
+        </div>
+    </div>
+
+    <nav>
+        <button class="active" onclick="showPage('homePage', this)">Home</button>
+        <button onclick="showPage('aboutPage', this)">About</button>
+        <button onclick="showPage('contactPage', this)">Contact</button>
+        <button onclick="showPage('loginPage', this)">Student Login</button>
+        <button onclick="showAdminLogin()">🔐 Admin</button>
+    </nav>
+</header>
+
+
+<!-- HOME PAGE -->
+
+<section id="homePage">
+
+    <div class="hero">
+        <div class="hero-content">
+            <h1>Welcome to Aboker Secondary School</h1>
+
+            <p>
+                Empowering students through quality education,
+                knowledge, technology, and academic excellence.
+            </p>
+
+            <div class="hero-actions">
+                <button class="primary" onclick="showPage('loginPage')">
+                    🎓 Start Examination
+                </button>
+
+                <button class="secondary" onclick="showPage('aboutPage')">
+                    Learn About Our School
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+
+        <div class="stats">
+            <div class="stat">
+                <strong>🎓</strong>
+                <span>Student Learning</span>
+            </div>
+
+            <div class="stat">
+                <strong>📚</strong>
+                <span>Academic Excellence</span>
+            </div>
+
+            <div class="stat">
+                <strong>💻</strong>
+                <span>Digital Examination</span>
+            </div>
+
+            <div class="stat">
+                <strong>🌟</strong>
+                <span>Bright Future</span>
+            </div>
+        </div>
+
+        <div style="margin-top:45px">
+            <div class="section-title">
+                <h1>Explore Our School</h1>
+                <p>
+                    Discover learning, teamwork, and educational
+                    opportunities.
+                </p>
+            </div>
+
+            <div class="gallery">
+
+                <div class="gallery-card">
+                    <img
+                        src="https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=800&q=80"
+                        alt="Students learning in a classroom">
+
+                    <h3>Quality Education</h3>
+                    <p>
+                        Encouraging students to learn, develop skills,
+                        and achieve their academic goals.
+                    </p>
+                </div>
+
+                <div class="gallery-card">
+                    <img
+                        src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=800&q=80"
+                        alt="Students celebrating graduation">
+
+                    <h3>Student Achievement</h3>
+                    <p>
+                        Supporting students as they prepare for
+                        higher education and future careers.
+                    </p>
+                </div>
+
+                <div class="gallery-card">
+                    <img
+                        src="https://images.unsplash.com/photo-1521587760476-6c12a4b040da?auto=format&fit=crop&w=800&q=80"
+                        alt="Books and a learning library">
+
+                    <h3>Reading and Research</h3>
+                    <p>
+                        Developing knowledge through reading,
+                        independent study, and research.
+                    </p>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="card" style="margin-top:35px;text-align:center">
+            <h1>Online Examination System</h1>
+
+            <p class="subtitle">
+                Practice your knowledge in six academic subjects
+                through our online examination platform.
+            </p>
+
+            <button class="primary" onclick="showPage('loginPage')">
+                Enter Examination System
+            </button>
+        </div>
+
+    </div>
+</section>
+
+
+<!-- ABOUT PAGE -->
+
+<section id="aboutPage" class="hidden">
+
+    <div class="container">
+
+        <div class="card">
+            <h1>About Aboker Secondary School</h1>
+
+            <p>
+                Welcome to Aboker Secondary School. This website
+                provides information about the school and offers
+                students access to an online examination system.
+            </p>
+
+            <br>
+
+            <p>
+                Our aim is to support learning, encourage academic
+                development, and help students prepare for their
+                educational goals through the effective use of
+                technology.
+            </p>
+        </div>
+
+        <div class="about-grid" style="margin-top:25px">
+
+            <div class="about-box">
+                <h3>🏫 School Background</h3>
+
+                <p>
+                    Aboker Secondary School is represented on this
+                    website as a learning community committed to
+                    student education and academic development.
+                </p>
+
+                <br>
+
+                <p>
+                    The school's official founding year, location,
+                    history, and other verified details can be added
+                    here when they are available.
+                </p>
+            </div>
+
+            <div class="about-box">
+                <h3>🎯 Our Mission</h3>
+
+                <p>
+                    To support students in gaining knowledge,
+                    developing good learning habits, strengthening
+                    their abilities, and preparing for future
+                    educational opportunities.
+                </p>
+            </div>
+
+            <div class="about-box">
+                <h3>🌟 Our Vision</h3>
+
+                <p>
+                    To encourage a learning environment in which
+                    students can develop their potential and work
+                    toward a successful future.
+                </p>
+            </div>
+
+            <div class="about-box">
+                <h3>📚 Our Educational Goals</h3>
+
+                <p>
+                    Promote academic excellence, critical thinking,
+                    creativity, responsible technology use, and
+                    effective preparation for examinations.
+                </p>
+            </div>
+
+            <div class="about-box">
+                <h3>🤝 Our Values</h3>
+
+                <p>
+                    Respect, honesty, responsibility, cooperation,
+                    discipline, and a commitment to continuous
+                    learning.
+                </p>
+            </div>
+
+            <div class="about-box">
+                <h3>💻 Digital Learning</h3>
+
+                <p>
+                    This website allows students to select subjects,
+                    answer examination questions, and submit their
+                    work for review by the administrator.
+                </p>
+            </div>
+
+        </div>
+
+        <div class="card" style="margin-top:25px">
+            <h2>Our Commitment to Students</h2>
+
+            <p style="margin-top:12px">
+                We believe that education can open doors to new
+                opportunities. Students are encouraged to study
+                consistently, practise problem-solving, and prepare
+                for their future ambitions.
+            </p>
+        </div>
+
+    </div>
+</section>
+
+
+<!-- CONTACT PAGE -->
+
+<section id="contactPage" class="hidden">
+
+    <div class="container">
+
+        <div class="section-title">
+            <h1>Contact Us</h1>
+
+            <p>
+                Have a question about the website or examination
+                system? Send us a message.
+            </p>
+        </div>
+
+        <div class="contact-grid">
+
+            < class="contact-info">
+                <h2>School Information</h2<div class="contact-info">
+    <h2>School Information</h2>
+
+    <p>
+        🏫 <strong>School Name:</strong><br>
+        Aboker Secondary School
+    </p>
+
+    <p>
+        📍 <strong>Address:</strong><br>
+        Harar, Ethiopia
+    </p>
+
+    <p>
+        📞 <strong>Phone:</strong><br>
+        <a href="tel:0947421240" style="color:hwb(241 13% 7%);">
+            0947421240
+        </a>
+    </p>
+
+    <p>
+        ✉️ <strong>Email:</strong><br>
+        <a href="mailto:ezadinshame95@gmail.com"
+           style="color:hwb(251 14% 9%);overflow-wrap:anywhere;">
+            ezadinshame95@gmail.com
+        </a>
+    </p>
+
+    <p>
+        💻 <strong>Website:</strong><br>
+        Aboker Secondary School Online Examination System
+    </p>
+
+    <p>
+        🎓 <strong>Motto:</strong><br>
+        Learn Today, Lead Tomorrow
+    </p>
+                </div>
+
+            <div class="card">
+                <h2>Send Us a Message</h2>
+
+                <form id="contactForm">
+
+                    <label for="contactName">Full Name</label>
+                    <input
+                        id="contactName"
+                        type="text"
+                        placeholder="Enter your full name"
+                        required>
+
+                    <label for="contactEmail">Email Address</label>
+                    <input
+                        id="contactEmail"
+                        type="email"
+                        placeholder="Enter your email"
+                        required>
+
+                    <label for="contactSubject">Subject</label>
+                    <input
+                        id="contactSubject"
+                        type="text"
+                        placeholder="Enter message subject"
+                        required>
+
+                    <label for="contactMessage">Your Message</label>
+                    <textarea
+                        id="contactMessage"
+                        placeholder="Write your message here..."
+                        required></textarea>
+
+                    <button class="primary full-width" type="submit">
+                        Send Message
+                    </button>
+
+                    <p id="contactStatus" class="form-message"></p>
+
+                </form>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+<!-- STUDENT LOGIN -->
+
+<section id="loginPage" class="hidden">
+
+    <div class="container">
+
+        <div class="card">
+            <h1>🎓 Student Login</h1>
+
+            <p class="subtitle">
+                Enter your information to start the examination.
+            </p>
+
+            <form id="studentLoginForm">
+
+                <label for="studentName">Student Name</label>
+                <input
+                    id="studentName"
+                    type="text"
+                    placeholder="Enter your full name"
+                    required>
+
+                <label for="studentId">Student ID</label>
+                <input
+                    id="studentId"
+                    type="text"
+                    placeholder="Enter your student ID"
+                    required>
+
+                <button class="primary full-width" type="submit">
+                    Continue to Subjects
+                </button>
+
+            </form>
+        </div>
+
+    </div>
+</section>
+
+
+<!-- SUBJECT PAGE -->
+
+<section id="subjectPage" class="hidden">
+
+    <div class="container">
+
+        <div class="card">
+            <h1>📚 Choose Your Subject</h1>
+
+            <p class="subtitle">
+                Grade 12 Hard / Entrance Examination
+            </p>
+
+            <p>
+                Student:
+                <strong id="displayStudent"></strong>
+            </p>
+        </div>
+
+        <div class="subject-grid">
+
+            <button class="subject" onclick="startExam('Mathematics')">
+                <div class="icon">📐</div>
+                <h2>Mathematics</h2>
+                <p>20 Questions</p>
+            </button>
+
+            <button class="subject" onclick="startExam('Physics')">
+                <div class="icon">⚛️</div>
+                <h2>Physics</h2>
+                <p>20 Questions</p>
+            </button>
+
+            <button class="subject" onclick="startExam('Chemistry')">
+                <div class="icon">🧪</div>
+                <h2>Chemistry</h2>
+                <p>20 Questions</p>
+            </button>
+
+            <button class="subject" onclick="startExam('Biology')">
+                <div class="icon">🧬</div>
+                <h2>Biology</h2>
+                <p>20 Questions</p>
+            </button>
+
+            <button class="subject" onclick="startExam('English')">
+                <div class="icon">🇬🇧</div>
+                <h2>English</h2>
+                <p>20 Questions</p>
+            </button>
+
+            <button class="subject" onclick="startExam('Aptitude')">
+                <div class="icon">🧠</div>
+                <h2>Aptitude</h2>
+                <p>20 Questions</p>
+            </button>
+
+        </div>
+
+    </div>
+</section>
+
+
+<!-- EXAM PAGE -->
+
+<section id="examPage" class="hidden">
+
+    <div class="container">
+
+        <div class="exam-bar">
+
+            <div style="display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap">
+
+                <strong id="examSubject">Examination</strong>
+
+                <span class="timer">
+                    ⏱️ <span id="timer">30:00</span>
+                </span>
+
+            </div>
+
+            <div class="progress-bg">
+                <div id="progress" class="progress"></div>
+            </div>
+
+            <p id="progressText" style="margin-top:8px">
+                Answered: 0 / 20
+            </p>
+
+        </div>
+
+        <div id="questionsContainer"></div>
+
+        <button class="danger" onclick="submitExam(false)">
+            Submit Examination
+        </button>
+
+    </div>
+</section>
+
+
+<!-- SUBMITTED PAGE -->
+
+<section id="submittedPage" class="hidden">
+
+    <div class="container">
+
+        <div class="card success">
+
+            <div class="success-icon">✅</div>
+
+            <h1>Examination Submitted Successfully</h1>
+
+            <p class="subtitle">
+                Your examination has been submitted.
+            </p>
+
+            <p>
+                Your score is not displayed. The administrator
+                will review your result.
+            </p>
+
+            <br>
+
+            <button class="primary" onclick="finishExam()">
+                Finish
+            </button>
+
+        </div>
+
+    </div>
+</section>
+
+
+<!-- ADMIN LOGIN -->
+
+<section id="adminLoginPage" class="hidden">
+
+    <div class="container">
+
+        <div class="card">
+
+            <h1>🔐 Administrator Login</h1>
+
+            <p class="subtitle">
+                Enter administrator credentials.
+            </p>
+
+            <form id="adminLoginForm">
+
+                <label for="adminUsername">Username</label>
+                <input
+                    id="adminUsername"
+                    type="text"
+                    placeholder="Enter username"
+                    required>
+
+                <label for="adminPassword">Password</label>
+                <input
+                    id="adminPassword"
+                    type="password"
+                    placeholder="Enter password"
+                    required>
+
+                <button class="primary full-width" type="submit">
+                    Login
+                </button>
+
+            </form>
+
+            <p style="margin-top:15px;color:#667085;font-size:13px">
+                The demonstration login credentials are documented
+                in the JavaScript section of this file.
+            </p>
+
+        </div>
+
+    </div>
+</section>
+
+
+<!-- ADMIN DASHBOARD -->
+
+<section id="adminPage" class="hidden">
+
+    <div class="container">
+
+        <div class="card">
+
+            <h1>📊 Administrator Dashboard</h1>
+
+            <p class="subtitle">
+                Review student examination results.
+            </p>
+
+            <div id="resultsContainer"></div>
+
+            <br>
+
+            <button class="danger" onclick="clearResults()">
+                Delete All Results
+            </button>
+
+            <button
+                class="secondary"
+                onclick="adminLogout()"
+                style="margin-left:8px">
+
+                Logout
+
+            </button>
+
+        </div>
+
+    </div>
+</section>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+    <div class="brand" style="justify-content:center;margin-bottom:12px">
+        <div class="logo">ABS</div>
+
+        <div style="text-align:left">
+            <h2>Aboker Secondary School</h2>
+            <p>Learn Today, Lead Tomorrow</p>
+        </div>
+    </div>
+
+    <p>Education • Knowledge • Excellence</p>
+
+    <p>
+        &copy; <span id="year"></span>
+        Aboker Secondary School.
+        All rights reserved.
+    </p>
+
+    <div>
+        <button class="secondary" onclick="showPage('homePage')">
+            Home
+        </button>
+
+        <button class="secondary" onclick="showPage('aboutPage')">
+            About
+        </button>
+
+        <button class="secondary" onclick="showPage('contactPage')">
+            Contact
+        </button>
+    </div>
+
+</footer>
+
+
+<script>
+
+/* ==========================================
+   NAVIGATION
+========================================== */
+
+const pageIds = [
+    "homePage",
+    "aboutPage",
+    "contactPage",
+    "loginPage",
+    "subjectPage",
+    "examPage",
+    "submittedPage",
+    "adminLoginPage",
+    "adminPage"
+];
+
+let currentStudent = "";
+let currentStudentId = "";
+let currentSubject = "";
+let currentQuestions = [];
+let timerInterval = null;
+let timeLeft = 30 * 60;
+let examSubmitted = false;
+let adminAuthenticated = false;
+
+document.getElementById("year").textContent =
+    new Date().getFullYear();
+
+function showPage(pageId, button = null) {
+
+    if (pageId !== "examPage") {
+        stopTimer();
+    }
+
+    hideAllPages();
+
+    const page = document.getElementById(pageId);
+
+    if (page) {
+        page.classList.remove("hidden");
+    }
+
+    document.querySelectorAll("nav button").forEach(btn => {
+        btn.classList.remove("active");
+    });
+
+    if (button) {
+        button.classList.add("active");
+    }
+
+    window.scrollTo(0, 0);
+}
+
+function hideAllPages() {
+    pageIds.forEach(id => {
+        document.getElementById(id).classList.add("hidden");
+    });
+}
+
+
+/* ==========================================
+   STUDENT LOGIN
+========================================== */
+
+document.getElementById("studentLoginForm")
+.addEventListener("submit", function(event) {
+
+    event.preventDefault();
+
+    const name = document.getElementById("studentName")
+        .value.trim();
+
+    const id = document.getElementById("studentId")
+        .value.trim();
+
+    if (!name || !id) {
+        alert("Please enter your name and student ID.");
+        return;
+    }
+
+    currentStudent = name;
+    currentStudentId = id;
+
+    document.getElementById("displayStudent").textContent =
+        name + " (" + id + ")";
+
+    showPage("subjectPage");
+});
+
+
+/* ==========================================
+   CONTACT FORM
+========================================== */
+
+document.getElementById("contactForm")
+.addEventListener("submit", function(event) {
+
+    event.preventDefault();
+
+    document.getElementById("contactStatus").textContent =
+        "Your message has been prepared, but this demonstration " +
+        "website cannot send it to the school. A server or email " +
+        "service must be connected to deliver messages.";
+
+    document.getElementById("contactStatus").style.color =
+        "#b45309";
+});
+
+
+/* ==========================================
+   QUESTION BANK
+
+   Replace or expand these questions with
+   your school's approved examination questions.
+
+   Each subject below contains 20 questions.
+========================================== */
+
+function makeQuestions(items) {
+    return items.map(item => ({
+        question: item[0],
+        options: item[1],
+        answer: item[2]
+    }));
+}
+
+const questionBank = {
+
+Mathematics: makeQuestions([
+
+["If 2x + 5 = 15, find x.", ["3","5","7","10"], 1],
+["What is the derivative of x²?", ["x","2x","x²","2"], 1],
+["Solve x² - 9 = 0.", ["x=3 only","x=-3 only","x=±3","x=9"], 2],
+["What is log₂ 16?", ["2","3","4","8"], 2],
+["Find the sum of angles in a triangle.", ["90°","180°","270°","360°"], 1],
+["What is sin 30°?", ["0","1/2","√3/2","1"], 1],
+["Find the slope of y = 3x + 2.", ["2","3","5","-3"], 1],
+["What is the determinant of [[1,2],[3,4]]?", ["-2","2","10","-10"], 0],
+["Evaluate 2³ × 2².", ["16","24","32","64"], 2],
+["What is the integral of 2x?", ["2 + C","x² + C","2x² + C","x + C"], 1],
+["A die is rolled. Probability of getting 6?", ["1/2","1/3","1/6","5/6"], 2],
+["Find the 10th term of 2, 5, 8, 11, ...", ["26","27","29","30"], 1],
+["If f(x)=x+4, find f(3).", ["1","4","7","12"], 2],
+["Solve 3x = 21.", ["6","7","8","9"], 1],
+["What is the area of a circle?", ["2πr","πr²","πd","r²"], 1],
+["If cos θ = 1 and θ=0°, find θ.", ["0°","30°","60°","90°"], 0],
+["What is the vertex x-coordinate of y=x²-4x+1?", ["-2","1","2","4"], 2],
+["Expand (x+2)².", ["x²+4","x²+2x+4","x²+4x+4","x²+4x+2"], 2],
+["What is the mean of 2, 4, 6, 8?", ["4","5","6","7"], 1],
+["Solve |x| = 7.", ["x=7 only","x=-7 only","x=±7","x=0"], 2]
+
+]),
+
+Physics: makeQuestions([
+
+["SI unit of force?", ["Joule","Newton","Watt","Pascal"], 1],
+["Newton's second law is:", ["F=ma","V=IR","P=F/A","W=mg"], 0],
+["A car travels 100 m in 5 s. Average speed?", ["10 m/s","15 m/s","20 m/s","25 m/s"], 2],
+["What is the SI unit of power?", ["Joule","Watt","Newton","Volt"], 1],
+["Which particle has a negative charge?", ["Proton","Neutron","Electron","Nucleus"], 2],
+["What is the approximate value of g on Earth?", ["4.9","9.8","15","98"], 1],
+["Momentum is calculated as:", ["mv","ma","m/v","F/m"], 0],
+["What is the unit of frequency?", ["Hertz","Joule","Newton","Tesla"], 0],
+["Ohm's law is:", ["V=IR","F=ma","P=IV²","E=mc"], 0],
+["A 12 V source is connected to 4 Ω. Current?", ["2 A","3 A","4 A","48 A"], 1],
+["Work is zero when force is what angle to displacement?", ["0°","45°","90°","180°"], 2],
+["Sound cannot travel through:", ["Water","Air","Steel","Vacuum"], 3],
+["Energy of a photon is:", ["hf","mv","ma","IR"], 0],
+["Which lens converges parallel rays?", ["Concave","Convex","Plane mirror","Prism"], 1],
+["The SI unit of resistance is:", ["Ampere","Ohm","Volt","Coulomb"], 1],
+["Which wave needs a medium?", ["Radio wave","Light wave","Sound wave","X-ray"], 2],
+["A transformer operates using:", ["AC","DC only","Static charge","Gravity"], 0],
+["Kinetic energy is:", ["mv","½mv²","mgh","Fd²"], 1],
+["Acceleration is the rate of change of:", ["Distance","Velocity","Mass","Force"], 1],
+["The image formed by a plane mirror is:", ["Real and inverted","Virtual and upright","Always enlarged","Always diminished"], 1]
+
+]),
+
+Chemistry: makeQuestions([
+
+["Atomic number equals the number of:", ["Neutrons","Protons","Nucleons","Shells"], 1],
+["The pH of a neutral solution at 25°C is:", ["0","5","7","14"], 2],
+["Which bond involves sharing electrons?", ["Ionic","Covalent","Metallic","Nuclear"], 1],
+["Oxidation involves:", ["Gain of electrons","Loss of electrons","Gain of neutrons","Loss of mass"], 1],
+["Avogadro's constant is approximately:", ["6.02×10²³","3×10⁸","9.8","1.6×10⁻¹⁹"], 0],
+["The chemical formula of water is:", ["CO₂","H₂O","O₂","H₂O₂"], 1],
+["Acid + carbonate produces:", ["Oxygen","Hydrogen","Carbon dioxide","Nitrogen"], 2],
+["The most electronegative element is:", ["Oxygen","Fluorine","Chlorine","Nitrogen"], 1],
+["A catalyst generally:", ["Raises activation energy","Lowers activation energy","Stops all reactions","Changes atomic number"], 1],
+["The functional group of alcohols is:", ["-OH","-COOH","-CHO","-NH₂"], 0],
+["A strong acid among these is:", ["HCl","CH₃COOH","NH₃","H₂O"], 0],
+["Oxidation number of oxygen is usually:", ["+2","-2","+1","0"], 1],
+["Which particle determines an element's identity?", ["Neutron","Proton","Electron shell","Molecule"], 1],
+["A solution with pH 3 is:", ["Acidic","Neutral","Basic","Always pure water"], 0],
+["Which is a noble gas?", ["Sodium","Chlorine","Neon","Calcium"], 2],
+["The process liquid to gas is:", ["Freezing","Condensation","Vaporization","Deposition"], 2],
+["The molar mass of H₂O is approximately:", ["16 g/mol","18 g/mol","20 g/mol","22 g/mol"], 1],
+["Which gas supports combustion?", ["Nitrogen","Oxygen","Carbon dioxide","Hydrogen"], 1],
+["A reducing agent is generally:", ["Oxidized","Reduced","Unchanged","A catalyst only"], 0],
+["The products of complete hydrocarbon combustion are:", ["CO₂ and H₂O","CO and H₂","C and O₂","N₂ and H₂"], 0]
+
+]),
+
+Biology: makeQuestions([
+
+["The main site of ATP production is the:", ["Nucleus","Mitochondrion","Ribosome","Golgi body"], 1],
+["The basic unit of heredity is the:", ["Tissue","Gene","Organ","Cell wall"], 1],
+["DNA replication occurs during which cell-cycle phase?", ["G1","S","G2","M"], 1],
+["Photosynthesis mainly occurs in:", ["Mitochondria","Chloroplasts","Ribosomes","Lysosomes"], 1],
+["Which pigment absorbs light for photosynthesis?", ["Hemoglobin","Chlorophyll","Melanin","Keratin"], 1],
+["The functional unit of the kidney is the:", ["Neuron","Nephron","Alveolus","Villus"], 1],
+["Insulin is produced by the:", ["Liver","Pancreas","Kidney","Thyroid"], 1],
+["Which process produces genetically different gametes?", ["Mitosis","Meiosis","Budding","Binary fission"], 1],
+["Xylem transports mainly:", ["Sugars","Water and minerals","Proteins","Fats"], 1],
+["Phloem transports mainly:", ["Organic food substances","Water only","Oxygen only","Minerals only"], 0],
+["The scientist associated with natural selection is:", ["Newton","Darwin","Einstein","Pasteur"], 1],
+["Gas exchange in the lungs occurs mainly in:", ["Trachea","Alveoli","Larynx","Diaphragm"], 1],
+["Which structure controls entry and exit from a cell?", ["Nucleus","Cell membrane","Ribosome","Chromosome"], 1],
+["Homeostasis means maintaining:", ["Stable internal conditions","Growth only","Movement only","Digestion only"], 0],
+["Which blood cells carry oxygen?", ["Red blood cells","Platelets","Neurons","Lymphocytes"], 0],
+["Which cells produce antibodies?", ["Red blood cells","B lymphocytes","Platelets","Muscle cells"], 1],
+["The basic unit of life is the:", ["Organ","Cell","Organ system","Tissue"], 1],
+["Which molecule stores hereditary information?", ["Glucose","DNA","Starch","Water"], 1],
+["Translation takes place at the:", ["Ribosome","Nucleus only","Cell wall","Vacuole"], 0],
+["Which hormone is associated with fight-or-flight responses?", ["Insulin","Adrenaline","Melatonin","Thyroxine"], 1]
+
+]),
+
+English: makeQuestions([
+
+["Choose the correct sentence.", ["She have a book.","She has a book.","She having a book.","She haves a book."], 1],
+["If I study hard, I _____ the exam.", ["passed","will pass","would passed","passing"], 1],
+["The opposite of ancient is:", ["Old","Modern","Historic","Past"], 1],
+["Change to passive: They built the house.", ["The house built them.","The house was built by them.","The house is build.","The house has build."], 1],
+["Which word is an adjective?", ["Quickly","Beauty","Beautiful","Beautify"], 2],
+["He has lived here _____ 2020.", ["for","since","during","at"], 1],
+["She is interested _____ biology.", ["on","at","in","with"], 2],
+["A synonym of rapid is:", ["Slow","Fast","Weak","Late"], 1],
+["By the time we arrived, the film _____.", ["starts","started","had started","start"], 2],
+["Reported speech: He said, 'I am tired.'", ["He said he was tired.","He says tired.","He said I tired.","He said he is tired yesterday."], 0],
+["Neither Ali nor his friends _____ ready.", ["is","are","be","has"], 1],
+["Although expresses:", ["Contrast","Time only","Place","Possession"], 0],
+["If it rains tomorrow, we _____ at home.", ["stayed","will stay","would stayed","stay yesterday"], 1],
+["Choose the correct article: He is _____ honest man.", ["a","an","the only","no article"], 1],
+["The plural of criterion is:", ["Criterions","Criteria","Criterias","Criterionies"], 1],
+["If I were you, I _____ apologize.", ["will","would","am","was"], 1],
+["She speaks English _____ than her brother.", ["good","best","better","well"], 2],
+["The closest meaning of essential is:", ["Optional","Necessary","Rare","Unusual"], 1],
+["Choose the correct preposition: He depends _____ his parents.", ["at","on","in","for"], 1],
+["Which sentence is grammatically correct?", ["They doesn't know.","They don't know.","They not knows.","They didn't knew."], 1]
+
+]),
+
+Aptitude: makeQuestions([
+
+["Find the next number: 2, 6, 12, 20, 30, ?", ["36","40","42","44"], 2],
+["Find the next number: 3, 9, 27, 81, ?", ["162","243","324","729"], 1],
+["If CAT becomes DBU, DOG becomes:", ["EPH","EOH","DPH","FPH"], 0],
+["A man walks 3 km north and 4 km east. How far from the start?", ["5 km","7 km","12 km","1 km"], 0],
+["All roses are flowers. Which statement follows?", ["All roses are flowers.","All flowers are roses.","No roses are flowers.","All flowers are red."], 0],
+["What is the angle between clock hands at 3:00?", ["30°","60°","90°","180°"], 2],
+["5 workers finish a job in 12 days. How long for 10 workers at the same rate?", ["3 days","6 days","12 days","24 days"], 1],
+["Find the odd one out.", ["Triangle","Square","Circle","Rectangle"], 2],
+["4 pencils cost 20 birr. What do 10 pencils cost?", ["40 birr","45 birr","50 birr","60 birr"], 2],
+["Book is to reading as fork is to:", ["Writing","Eating","Walking","Sleeping"], 1],
+["A train travels 120 km in 2 hours. Its average speed is:", ["40 km/h","50 km/h","60 km/h","80 km/h"], 2],
+["Complete the sequence: A, C, F, J, O, ?", ["T","U","V","W"], 1],
+["A bag contains 3 red and 2 blue balls. Probability of red?", ["2/5","3/5","1/2","3/2"], 1],
+["Which number does not belong: 4, 9, 16, 25, 36, 50?", ["16","25","36","50"], 3],
+["What is 20% of 150?", ["15","20","30","50"], 2],
+["A father is 40 and his son is 10. In how many years will the father be twice the son's age?", ["10","15","20","25"], 2],
+["If yesterday was Monday, what day is tomorrow?", ["Tuesday","Wednesday","Thursday","Friday"], 1],
+["Find the next number: 5, 10, 20, 40, ?", ["45","60","80","100"], 2],
+["A student scores 70, 80, and 90. What is the average?", ["75","80","85","90"], 1],
+["If SOME = 1234 and MORE = 5234, what digit represents M?", ["1","2","3","5"], 3]
+
+])
+
+};
+
+
+/* ==========================================
+   START EXAM
+========================================== */
+
+function startExam(subject) {
+
+    if (!currentStudent || !currentStudentId) {
+        alert("Please log in first.");
+        showPage("loginPage");
+        return;
+    }
+
+    currentSubject = subject;
+    currentQuestions = questionBank[subject];
+
+    if (!currentQuestions || currentQuestions.length !== 20) {
+        alert("The subject must contain exactly 20 questions.");
+        return;
+    }
+
+    examSubmitted = false;
+
+    document.getElementById("examSubject").textContent =
+        subject + " Examination";
+
+    renderQuestions();
+
+    showPage("examPage");
+
+    startTimer();
+}
+
+
+/* ==========================================
+   RENDER QUESTIONS
+========================================== */
+
+function renderQuestions() {
+
+    const container =
+        document.getElementById("questionsContainer");
+
+    container.innerHTML = "";
+
+    currentQuestions.forEach((q, index) => {
+
+        const div = document.createElement("div");
+
+        div.className = "question";
+
+        const title = document.createElement("h3");
+
+        title.textContent =
+            (index + 1) + ". " + q.question;
+
+        div.appendChild(title);
+
+        q.options.forEach((option, optIndex) => {
+
+            const label = document.createElement("label");
+
+            label.className = "option";
+
+            const radio = document.createElement("input");
+
+            radio.type = "radio";
+            radio.name = "question" + index;
+            radio.value = optIndex;
+
+            radio.addEventListener("change", updateProgress);
+
+            label.appendChild(radio);
+            label.appendChild(
+                document.createTextNode(option)
+            );
+
+            div.appendChild(label);
+        });
+
+        container.appendChild(div);
+    });
+
+    updateProgress();
+}
+
+
+/* ==========================================
+   PROGRESS
+========================================== */
+
+function updateProgress() {
+
+    let answered = 0;
+
+    currentQuestions.forEach((q, index) => {
+
+        const selected = document.querySelector(
+            'input[name="question' + index + '"]:checked'
+        );
+
+        if (selected) {
+            answered++;
+        }
+    });
+
+    const percent =
+        (answered / currentQuestions.length) * 100;
+
+    document.getElementById("progress").style.width =
+        percent + "%";
+
+    document.getElementById("progressText").textContent =
+        "Answered: " + answered + " / " +
+        currentQuestions.length;
+}
+
+
+/* ==========================================
+   TIMER
+========================================== */
+
+function startTimer() {
+
+    stopTimer();
+
+    timeLeft = 30 * 60;
+
+    updateTimer();
+
+    timerInterval = setInterval(() => {
+
+        timeLeft--;
+
+        updateTimer();
+
+        if (timeLeft <= 0) {
+
+            stopTimer();
+
+            alert(
+                "Time is over. Your examination will be submitted."
+            );
+
+            submitExam(true);
+        }
+
+    }, 1000);
+}
+
+function stopTimer() {
+
+    if (timerInterval !== null) {
+
+        clearInterval(timerInterval);
+
+        timerInterval = null;
+    }
+}
+
+function updateTimer() {
+
+    const minutes = Math.floor(timeLeft / 60);
+
+    const seconds = timeLeft % 60;
+
+    document.getElementById("timer").textContent =
+        String(minutes).padStart(2, "0") + ":" +
+        String(seconds).padStart(2, "0");
+}
+
+
+/* ==========================================
+   SUBMIT EXAM
+========================================== */
+
+function submitExam(autoSubmit = false) {
+
+    if (examSubmitted) {
+        return;
+    }
+
+    if (!autoSubmit) {
+
+        const confirmed = confirm(
+            "Are you sure you want to submit your examination?"
+        );
+
+        if (!confirmed) {
+            return;
+        }
+    }
+
+    stopTimer();
+
+    let score = 0;
+
+    currentQuestions.forEach((q, index) => {
+
+        const selected = document.querySelector(
+            'input[name="question' + index + '"]:checked'
+        );
+
+        if (
+            selected &&
+            Number(selected.value) === q.answer
+        ) {
+            score++;
+        }
+    });
+
+    const result = {
+
+        studentName: currentStudent,
+
+        studentId: currentStudentId,
+
+        subject: currentSubject,
+
+        score: score,
+
+        total: currentQuestions.length,
+
+        percentage: (
+            score / currentQuestions.length * 100
+        ).toFixed(1),
+
+        date: new Date().toLocaleString()
+
+    };
+
+    try {
+
+        const results = JSON.parse(
+            localStorage.getItem("examResults") || "[]"
+        );
+
+        results.push(result);
+
+        localStorage.setItem(
+            "examResults",
+            JSON.stringify(results)
+        );
+
+    } catch (error) {
+
+        alert(
+            "Your browser could not save the result. " +
+            "Please contact the administrator."
+        );
+
+        return;
+    }
+
+    examSubmitted = true;
+
+    showPage("submittedPage");
+}
+
+
+/* ==========================================
+   FINISH
+========================================== */
+
+function finishExam() {
+
+    currentStudent = "";
+    currentStudentId = "";
+    currentSubject = "";
+    currentQuestions = [];
+
+    document.getElementById("studentLoginForm").reset();
+
+    showPage("homePage");
+}
+
+
+/* ==========================================
+   ADMIN LOGIN
+
+   DEMONSTRATION CREDENTIALS:
+   Username: admin
+   Password: 12345
+
+   IMPORTANT:
+   This client-side login is not secure for
+   a publicly deployed website.
+========================================== */
+
+function showAdminLogin() {
+
+    stopTimer();
+
+    showPage("adminLoginPage");
+}
+
+document.getElementById("adminLoginForm")
+.addEventListener("submit", function(event) {
+
+    event.preventDefault();
+
+    const username =
+        document.getElementById("adminUsername").value;
+
+    const password =
+        document.getElementById("adminPassword").value;
+
+    if (
+        username === "admin" &&
+        password === "12345"
+    ) {
+
+        adminAuthenticated = true;
+
+        loadResults();
+
+        showPage("adminPage");
+
+    } else {
+
+        alert("Incorrect username or password.");
+    }
+});
+
+
+/* ==========================================
+   ADMIN RESULTS
+========================================== */
+
+function loadResults() {
+
+    const container =
+        document.getElementById("resultsContainer");
+
+    if (!adminAuthenticated) {
+
+        container.textContent =
+            "Please log in as administrator.";
+
+        return;
+    }
+
+    let results = [];
+
+    try {
+
+        results = JSON.parse(
+            localStorage.getItem("examResults") || "[]"
+        );
+
+    } catch (error) {
+
+        container.textContent =
+            "Unable to read examination records.";
+
+        return;
+    }
+
+    if (results.length === 0) {
+
+        container.innerHTML =
+            "<p>No examination results yet.</p>";
+
+        return;
+    }
+
+    const table = document.createElement("table");
+
+    const wrapper = document.createElement("div");
+
+    wrapper.className = "table-wrap";
+
+    const thead = document.createElement("thead");
+
+    const headerRow = document.createElement("tr");
+
+    [
+        "Student",
+        "Student ID",
+        "Subject",
+        "Score",
+        "Percentage",
+        "Date"
+    ].forEach(text => {
+
+        const th = document.createElement("th");
+
+        th.textContent = text;
+
+        headerRow.appendChild(th);
+    });
+
+    thead.appendChild(headerRow);
+
+    const tbody = document.createElement("tbody");
+
+    results.forEach(result => {
+
+        const tr = document.createElement("tr");
+
+        [
+            result.studentName,
+            result.studentId,
+            result.subject,
+            result.score + "/" + result.total,
+            result.percentage + "%",
+            result.date
+        ].forEach(value => {
+
+            const td = document.createElement("td");
+
+            td.textContent = value;
+
+            tr.appendChild(td);
+        });
+
+        tbody.appendChild(tr);
+    });
+
+    table.appendChild(thead);
+    table.appendChild(tbody);
+
+    wrapper.appendChild(table);
+
+    container.replaceChildren(wrapper);
+}
+
+
+/* ==========================================
+   DELETE RESULTS
+========================================== */
+
+function clearResults() {
+
+    if (!adminAuthenticated) {
+
+        alert("Administrator login is required.");
+
+        return;
+    }
+
+    const confirmed = confirm(
+        "Are you sure you want to delete ALL examination results?"
+    );
+
+    if (!confirmed) {
+        return;
+    }
+
+    localStorage.removeItem("examResults");
+
+    loadResults();
+
+    alert("All locally stored examination results have been deleted.");
+}
+
+
+/* ==========================================
+   ADMIN LOGOUT
+========================================== */
+
+function adminLogout() {
+
+    adminAuthenticated = false;
+
+    document.getElementById("adminLoginForm").reset();
+
+    showPage("homePage");
+}
+
+
+/* ==========================================
+   INITIAL PAGE
+========================================== */
+
+showPage("homePage");
+
+</script>
+
+</body>
+  </html>
